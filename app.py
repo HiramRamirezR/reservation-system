@@ -13,8 +13,26 @@ print("""
 option = int(input(">> "))
 
 if option == 1:
-    print("Available slots:")
-    print(slots)
+    print("\nAvailable slots:\n")
+
+    slots_in_day = []
+    for day in slots:
+        print(f">> {day}")
+        for slot in slots[day]:
+            if slots[day][slot] == None:
+                slots_in_day.append(slot)
+        print(f"{slots_in_day}\n")
+        slots_in_day = []
+
+elif option == 2:
+    name = input("Enter your name: ")
+    print("Select day:")
+    for day in enumerate(slots):
+        print(f"{day[0] + 1}. {day[1]}")
+
+    selected_day = int(input(">> ")) - 1
+    print("Select slot:")
+
 
 # Enter your name: Hiram
 # Select slot:
