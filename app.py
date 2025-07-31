@@ -1,3 +1,4 @@
+from slots import days
 from slots import slots
 
 print("Welcome to the Reservation System!\n")
@@ -6,7 +7,7 @@ print("""
 1. View available slots
 2. Create reservation
 3. View current reservations
-4. Cancel reservation/n
+4. Cancel reservation
 5. Exit
 """)
 
@@ -25,13 +26,14 @@ if option == 1:
         slots_in_day = []
 
 elif option == 2:
-    name = input("Enter your name: ")
-    print("Select day:")
+    name = input("\nEnter your name: ")
+    print("\nSelect day:\n")
     for day in enumerate(slots):
         print(f"{day[0] + 1}. {day[1]}")
 
-    selected_day = int(input(">> ")) - 1
-    print("Select slot:")
+    selected_day_index = int(input("\n>> ")) - 1
+    print(f"\nSelected day: {days[selected_day_index]}")
+    print("\nSelect slot:")
 
 
 # Enter your name: Hiram
