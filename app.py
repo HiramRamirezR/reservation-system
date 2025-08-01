@@ -1,5 +1,5 @@
 from slots import days
-from slots import slots
+from slots import week
 
 print("Welcome to the Reservation System!\n")
 print("Choose an option")
@@ -17,23 +17,36 @@ if option == 1:
     print("\nAvailable slots:\n")
 
     slots_in_day = []
-    for day in slots:
+    for day in week:
         print(f">> {day}")
-        for slot in slots[day]:
-            if slots[day][slot] == None:
+        for slot in week[day]:
+            if week[day][slot] == None:
                 slots_in_day.append(slot)
         print(f"{slots_in_day}\n")
         slots_in_day = []
 
 elif option == 2:
-    name = input("\nEnter your name: ")
+    name = input("\nEnter your name:\n>> ")
     print("\nSelect day:\n")
-    for day in enumerate(slots):
+    for day in enumerate(week):
         print(f"{day[0] + 1}. {day[1]}")
 
     selected_day_index = int(input("\n>> ")) - 1
-    print(f"\nSelected day: {days[selected_day_index]}")
-    print("\nSelect slot:")
+    selected_day = days[selected_day_index]
+    print(f"\nSelected day: {selected_day}")
+    print("\nSelect a slot:\n")
+
+    available_slots = []
+    for slot, v in week[selected_day].items():
+        if v == None:
+            available_slots.append(slot)
+
+    for i in enumerate(available_slots):
+        print(f"{i[0] + 1}. {i[1]}")
+
+    slot = int(input("\n>> ")) - 1
+    print(f"\nSlot selected: {available_slots[slot]}")
+
 
 
 # Enter your name: Hiram
