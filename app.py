@@ -26,7 +26,7 @@ if option == 1:
         slots_in_day = []
 
 elif option == 2:
-    name = input("\nEnter your name:\n>> ")
+    name = input("\nEnter your name:\n\n>> ")
     print("\nSelect day:\n")
     for day in enumerate(week):
         print(f"{day[0] + 1}. {day[1]}")
@@ -45,14 +45,16 @@ elif option == 2:
         print(f"{i[0] + 1}. {i[1]}")
 
     slot = int(input("\n>> ")) - 1
-    print(f"\nSlot selected: {available_slots[slot]}")
+    slot_selected = available_slots[slot]
+    print(f"\nSlot selected: {slot_selected}")
+    print("\nConfirm reservation?\n")
+
+    print(f"Reservation: {name} - {selected_day} at {slot_selected}\n")
+    confirm_reservation = input("y/n:\n>> ")
+
+    if confirm_reservation == "y":
+        print("Reservation confirmed!")
+    else:
+        print("Reservation cancelled!")
 
 
-
-# Enter your name: Hiram
-# Select slot:
-# 1. Monday 9:00–10:00
-# 2. Monday 10:00–11:00
-# >> 1
-
-# ✅ Reservation confirmed for Hiram on Monday 9:00–10:00
