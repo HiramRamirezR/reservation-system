@@ -7,7 +7,7 @@ complete = None
 
 while complete == None:
 
-    print("Welcome to the Reservation System!\n")
+    print("\nWelcome to the Reservation System!\n")
     print("Choose an option")
     print("""
     1. View available slots
@@ -19,6 +19,7 @@ while complete == None:
 
     option = int(input(">> "))
 
+# Opton 1 =======================================
     if option == 1:
         print("\nAvailable slots:\n")
 
@@ -31,6 +32,7 @@ while complete == None:
             print(f"{slots_in_day}\n")
             slots_in_day = []
 
+# Opton 2 =======================================
     elif option == 2:
         name = input("\nEnter your name:\n\n>> ")
         print("\nSelect day:\n")
@@ -55,9 +57,9 @@ while complete == None:
 
         print(f"\nReservation for: {name} - On {selected_day} at {slot_selected}")
         print("\nConfirm reservation?")
-        confirm_reservation = input("\ny/n:\n>> ")
 
         while True:
+            confirm_reservation = input("\ny/n:\n>> ")
             if confirm_reservation.lower() == "y":
                 week[selected_day][slot_selected] = name
                 with open("reservations.json", "w") as f:
@@ -69,6 +71,22 @@ while complete == None:
                 break
             else:
                 print("\nInvalid option. Please select 'y' or 'n'.")
+
+# Opton 3 =======================================
+    elif option == 3:
+
+        reserved = []
+        for day, slots in week.items():
+            for slot, name in slots.items():
+                if name != None:
+                    reserved.append((day, slot, name))
+
+    if reserved:
+        print("\nCurrent reservations:\n")
+        for r in reserved:
+            print(f"{r[2]} has a reservation on {r[0]} at {r[1]}")
+    else:
+        print("\nThere aren't reservations yet.")
 
 
 
