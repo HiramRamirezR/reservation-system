@@ -1,3 +1,6 @@
+import os
+import json
+
 from slots import days
 from slots import week
 
