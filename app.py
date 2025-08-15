@@ -1,8 +1,6 @@
 import os
 import json
-
-from slots import days
-from slots import week
+from slots import days, week
 
 
 complete = None
@@ -62,6 +60,8 @@ while complete == None:
         while True:
             if confirm_reservation.lower() == "y":
                 week[selected_day][slot_selected] = name
+                with open("reservations.json", "w") as f:
+                    json.dump(week, f, indent=4)
                 print("\nReservation confirmed!")
                 break
             elif confirm_reservation == "n":

@@ -1,3 +1,4 @@
+import os
 import json
 
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
@@ -10,5 +11,9 @@ for day in days:
     for hour in hours:
         week[day][hour] = None
 
-with open("reservations.json", "w") as f:
-    json.dump(week, f, indent=4)
+if os.path.exists("reservations.json"):
+    with open("reservations.json", "r") as f:
+        week = json.load(f)
+else:
+    with open("reservations.json", "w") as f:
+        json.dump(week, f, indent=4)
